@@ -1,4 +1,4 @@
-# simulacao-carro-elétrico-freio-regenerativo
+# simulaçao-carro-elétrico-freio-regenerativo
 Sistema de Controle de Frenagem Regenerativa e Gestão de Energia para Veículo Elétrico (VE)
 ![MATLAB](https://img.shields.io/badge/MATLAB-R2023a-orange.svg)
 ![Simulink](https://img.shields.io/badge/Simulink-Model-blue.svg)
