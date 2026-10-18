@@ -15,7 +15,9 @@ O objetivo principal é otimizar a recuperação de energia durante as desaceler
 # Arquitetura do Sistema e Lógica de Controle
 
 A lógica opera através de estados discretos baseados nos comandos do condutor (`Acelerador`, `Freio`) e parâmetros operacionais do veículo (`Velocidade, V`).
+
 <img width="705" height="408" alt="image" src="https://github.com/user-attachments/assets/92a19e5d-70dd-4de5-bc8f-902d6e141786" />
+
 ### Regras de Transição e Condições de Segurança:
 1. **Aceleração → Inércia:** Ativada quando [`Acelerador` >= 0.01 **E** `Freio` == 0].
 2. **Inércia → Frenagem Regenerativa:** Ativada quando [`Freio` > 0 **E** `V` > 5 km/h].
@@ -97,6 +99,21 @@ Durante a frenagem regenerativa, a potência líquida pode se tornar negativa, r
 
 > **Observação :** Em $t = 1800,1 \text{ s}$, o pulso de $P_{reg}$ dispara instantaneamente. A potência líquida torna-se negativa, criando um degrau de redução na energia gasta ($\Delta E \approx -60 \text{ kJ}$), confirmando a sincronização e a precisão do modelo.
 
+### Resultados finais da simulação
 
----
+Após 1 hora de simulação do veículo elétrico, foram obtidos os seguintes resultados:
+
+<img width="1204" height="312" alt="image" src="https://github.com/user-attachments/assets/99580fd3-7d10-4c57-ad7f-db50a1a4016d" />
+
+- **Energia consumida:**
+
+```math
+E_{\mathrm{consumida}} = 12{,}2374\ \text{kWh}
+```
+
+- **Estado de carga final da bateria (SoC):**
+
+```math
+\mathrm{SoC}_{\mathrm{final}} = 75{,}53\%
+```
 
