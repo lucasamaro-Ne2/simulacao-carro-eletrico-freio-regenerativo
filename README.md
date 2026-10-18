@@ -101,7 +101,7 @@ Durante a frenagem regenerativa, a potência líquida pode se tornar negativa, r
 
 ### Resultados finais da simulação
 
-Após 1 hora de simulação do veículo elétrico, foram obtidos os seguintes resultados:
+Após 1 hora de simulação do veículo elétrico, com uma bateria de 50kWh, foram obtidos os seguintes resultados:
 
 <img width="1204" height="312" alt="image" src="https://github.com/user-attachments/assets/99580fd3-7d10-4c57-ad7f-db50a1a4016d" />
 
