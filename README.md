@@ -24,6 +24,21 @@ A lógica opera através de estados discretos baseados nos comandos do condutor 
 ---
 
 ##  Modelagem Matemática e Física
+1. Potência de Tração ($P_{\text{tração}}$) e Força Resistiva ($F_r$)
+
+A potência de tração necessária para manter o veículo em velocidade constante é dada por:
+
+```math
+P_{\text{tração}} = F_r \cdot V/3.6
+
+$$
+F_r =
+\begin{cases}
+225\,\text{N}, & \text{se } V < 100\,\text{km/h} \\[6pt]
+450\,\text{N}, & \text{se } 100 \leq V < 120\,\text{km/h} \\[6pt]
+700\,\text{N}, & \text{se } V \geq 120\,\text{km/h}
+\end{cases}
+$$
 
 A potência regenerada pela máquina elétrica durante a frenagem é calculada por:
 
@@ -35,7 +50,7 @@ P_{\text{reg}} = V \cdot \eta \cdot F_{\text{frenagem}}
 Onde:
 
 - $V$: Velocidade do veículo ($\mathrm{m/s}$).
-- $\eta$: Eficiência da regeneração ($\eta = 0{,}75$).
+- $\eta$: Eficiência da regeneração ($\eta = 0{,}70$).
 - $F_{\mathrm{frenagem}}$: Força de frenagem aplicada ($\mathrm{N}$).
 
 ### Integração da Energia Líquida
@@ -66,13 +81,17 @@ Durante a frenagem regenerativa, a potência líquida pode se tornar negativa, r
 
 ### Resultados Observados (Análise no Scope):
 
+<img width="1361" height="639" alt="image" src="https://github.com/user-attachments/assets/0641cc15-6ea2-4f7e-a341-accea1015ab9" />
+
+
 | Parâmetro | Valor / Comportamento durante o Pulso ($3,6\text{s}$) | Interpretação Física |
 | :--- | :--- | :--- |
-| **Potência $P_{reg}$** | $+22,5 \text{ kW}$ | Motor atua como gerador |
-| **Energia Líquida ($\Delta E$)** | $-60,48 \text{ kJ}$ | Desconto na energia total consumida |
-| **Estado de Carga ($\Delta \text{SoC}$)** | Recarga efetiva por pulso | Elevação no percentual da bateria |
+| **Potência $P_{reg}$** | $+29,17 \text{ kW}$ | Motor atua como gerador |
+| **Energia Líquida ($\Delta E$)** | $-60 \text{ kJ}$ | Desconto na energia total consumida |
+| **Estado de Carga ($\Delta \text{SoC}$)** | +0,0333% | Recarga efetiva por pulso | Elevação no percentual da bateria |
 
-> **Observação Chave:** Em $t = 360,1 \text{ s}$, o pulso de $P_{reg}$ dispara instantaneamente. A potência líquida torna-se negativa, criando um degrau de redução na energia gasta ($\Delta E \approx -60,5 \text{ kJ}$), confirmando a sincronização e a precisão do modelo.
+> **Observação :** Em $t = 1800,1 \text{ s}$, o pulso de $P_{reg}$ dispara instantaneamente. A potência líquida torna-se negativa, criando um degrau de redução na energia gasta ($\Delta E \approx -60 \text{ kJ}$), confirmando a sincronização e a precisão do modelo.
+
 
 ---
 
