@@ -6,7 +6,7 @@ Sistema de Controle de Frenagem Regenerativa e Gestão de Energia para Veículo 
 ![Setor](https://img.shields.io/badge/Setor-Automotivo%20%2F%20Engenharia-green.svg)
 
  # Resumo
-Este projeto implementa uma **Máquina de Estados Finitos (FSM)** no **Stateflow** integrada a um modelo dinâmico no **Simulink** para simular e validar o **Sistema de Frenagem Regenerativa** de um veículo elétrico.
+Este projeto implementa uma **Máquina de Estados Finitos (FSM)** no **Stateflow** integrada a um modelo dinâmico no **Simulink** para simular e validar o **Sistema de Frenagem Regenerativa** em uma versão simplificada  de um veículo elétrico.
 
 O objetivo principal é otimizar a recuperação de energia durante as desacelerações, garantindo a segurança do veículo, limites de carga da bateria e transições suaves entre os modos de condução (*Aceleração*, *Inércia/Coasting* e *Frenagem Regenerativa*).
 
@@ -50,15 +50,14 @@ F_r =
 ##
  A potência regenerada pela máquina elétrica durante a frenagem é calculada por:
 ```math
-P_{\text{reg}} = V \cdot \eta \cdot F_{\text{frenagem}}
-```
+P_{\text{reg}} = \frac{V \cdot \eta \cdot F_{\text{frenagem}}}{3{,}6}
+``` 
 
 
 Onde:
-- $V$: Velocidade do veículo ($27{,}78 \text{ m/s}$, equivalente a $100 \text{ km/h}$).
+- $V$: Velocidade do veículo ( km/h).
 - $\eta$: Eficiência global da regeneração ($\eta = 0{,}70$).
 - $F_{\text{frenagem}}$: Força de frenagem aplicada pelo sistema ($F_{\text{frenagem}} = 1500 \text{ N}$).
-Com esses parâmetros, a potência gerada durante cada pulso de frenagem atinge $P_{\text{reg}} = 27{,}78 \cdot 0{,}70 \cdot 1500 \approx 29{,}17 \text{ kW}$.
 
 ### Integração da Energia Líquida
 
@@ -116,4 +115,5 @@ E_{\mathrm{consumida}} = 12{,}2374\ \text{kWh}
 ```math
 \mathrm{SoC}_{\mathrm{final}} = 75{,}53\%
 ```
+**Para uma mesma viagem sem o freio regenerativo, nenhum dos 10 pulsos de freio com duração de $3,6\,\text{s}$ aplicados ao longo de $1$ hora teriam gerado potência elétrica de volta para a bateria e, assim, aumentando sua carga efetiva. Sem a presença do freio regenerativo, a bateria estaria com uma carga de 75%. Desta forma, a presença do freio regenerativo aumentou a carga em 0,352% , o que equivale a uma energia total de $262{,}65\,\text{Wh}$. Validando com precisão a simulação e o funcionamento do carro elétrico como um alterador, transformando sua energia mecânica  em energia elétrica e assim conservando sua energia.** 
 
