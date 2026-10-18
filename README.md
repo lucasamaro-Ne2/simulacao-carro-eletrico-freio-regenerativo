@@ -23,35 +23,40 @@ A lógica opera através de estados discretos baseados nos comandos do condutor 
 
 ---
 
-##  Modelagem Matemática e Física
-1. Potência de Tração ($P_{\text{tração}}$) e Força Resistiva ($F_r$)
+#  Modelagem Matemática e Física
+## Potência de Tração ($P_{\text{tração}}$) e Força Resistiva ($F_r$)
 
 A potência de tração necessária para manter o veículo em velocidade constante é dada por:
 
-```math
-P_{\text{tração}} = F_r \cdot V/3.6
+A potência de tração é calculada por:
 
 $$
+P_{\mathrm{tração}} = \frac{F_r \cdot V}{3{,}6}
+$$
+
+A força de frenagem \(F_r\) varia conforme a velocidade do veículo:
+
+```math
 F_r =
 \begin{cases}
-225\,\text{N}, & \text{se } V < 100\,\text{km/h} \\[6pt]
-450\,\text{N}, & \text{se } 100 \leq V < 120\,\text{km/h} \\[6pt]
-700\,\text{N}, & \text{se } V \geq 120\,\text{km/h}
+225\ \text{N}, & \text{se } V < 100\ \text{km/h} \\
+450\ \text{N}, & \text{se } 100 \leq V < 120\ \text{km/h} \\
+700\ \text{N}, & \text{se } V \geq 120\ \text{km/h}
 \end{cases}
-$$
+```
 
-A potência regenerada pela máquina elétrica durante a frenagem é calculada por:
-
+##
+ A potência regenerada pela máquina elétrica durante a frenagem é calculada por:
 ```math
 P_{\text{reg}} = V \cdot \eta \cdot F_{\text{frenagem}}
 ```
 
 
 Onde:
-
-- $V$: Velocidade do veículo ($\mathrm{m/s}$).
-- $\eta$: Eficiência da regeneração ($\eta = 0{,}70$).
-- $F_{\mathrm{frenagem}}$: Força de frenagem aplicada ($\mathrm{N}$).
+- $V$: Velocidade do veículo ($27{,}78 \text{ m/s}$, equivalente a $100 \text{ km/h}$).
+- $\eta$: Eficiência global da regeneração ($\eta = 0{,}70$).
+- $F_{\text{frenagem}}$: Força de frenagem aplicada pelo sistema ($F_{\text{frenagem}} = 1500 \text{ N}$).
+Com esses parâmetros, a potência gerada durante cada pulso de frenagem atinge $P_{\text{reg}} = 27{,}78 \cdot 0{,}70 \cdot 1500 \approx 29{,}17 \text{ kW}$.
 
 ### Integração da Energia Líquida
 
